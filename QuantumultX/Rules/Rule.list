@@ -1,6 +1,6 @@
 # > Name        Rule
 # > Author      @RuCu6, @ddgksf2013, @kokoryh, @blackmatrix7, @app2smile, @DivineEngine, @zhangjun, @lwd-temp, @NobyDa, @ZY0714iu
-# > UpdateTime  2023-03-02 14:06
+# > UpdateTime  2023-03-10 00:33
 # > “#” “;" “//” 是注释符号, 去掉符号该行才生效
 # > 开启 「其他设置」->「分流匹配优化」选项, 则匹配优先级如下
 ; > HOST > HOST-SUFFIX > HOST-KEYWORD(WILDCARD) > GEOIP=IP-CIDR > USER-AGENT
@@ -38,13 +38,13 @@ HOST, fairplay.l.qq.com, DIRECT
 ### ===== PROXY ===== ###
 ; > 可把 Select 换成任意 策略组/节点
 ; > Google
-HOST, www.google.com, SG
-HOST-SUFFIX, gmail.com, SG
-HOST-SUFFIX, google.cn, SG
-HOST-SUFFIX, google.co.jp, SG
-HOST-SUFFIX, google.com.sg, SG
-HOST-SUFFIX, google.com.hk, SG
-HOST-KEYWORD, www.google., SG
+HOST, www.google.com, Select
+HOST-SUFFIX, gmail.com, Select
+HOST-SUFFIX, google.cn, Select
+HOST-SUFFIX, google.co.jp, Select
+HOST-SUFFIX, google.com.sg, Select
+HOST-SUFFIX, google.com.hk, Select
+HOST-KEYWORD, www.google., Select
 ; > Microsoft
 // HOST-SUFFIX, live.net, DIRECT
 // HOST-SUFFIX, login.live.com, DIRECT
@@ -66,17 +66,14 @@ HOST-SUFFIX, quantumult.app, Select
 HOST-SUFFIX, surge-activation.com, Select
 HOST-SUFFIX, stash-activation.com, Select
 # > 其他
-HOST, www.nsloon.com, Select     //loon一键导入
-HOST-SUFFIX, gstatic.com, Select
-HOST-KEYWORD, wiki, Select
+HOST, www.nsloon.com, Select     //Loon
 HOST-KEYWORD, v2ex, Select
 HOST-KEYWORD, notion, Select
-HOST, filters.adtidy.org, Select    //adguard
-HOST-SUFFIX, adguard.org, Select    //adguard
+HOST, filters.adtidy.org, Select
+HOST-SUFFIX, adguard.org, Select
 
 ### ===== REJECT ===== ###
 # > 安全浏览限制解除
-HOST, token.safebrowsing.apple, REJECT
 HOST, lookup.api.bsb.baidu.com, REJECT
 HOST, safebrowsing.googleapis.com, REJECT
 # > 知乎
@@ -131,6 +128,8 @@ IP-CIDR, 180.76.76.200/32, REJECT
 // HOST,im.tieba.baidu.com, REJECT
 // IP-CIDR, 203.107.1.1/24, REJECT
 # > 字节跳动
+HOST, dig.bdurl.net, REJECT
+HOST, ug.snssdk.com, REJECT
 HOST, is.snssdk.com, REJECT
 HOST, mcs.snssdk.com, REJECT
 HOST, pangolin.snssdk.com, REJECT
@@ -143,9 +142,6 @@ HOST, api-access.pangolin-sdk-toutiao-b.com, REJECT
 HOST, ad.toutiao.com, REJECT
 HOST, dsp.toutiao.com, REJECT
 HOST, ad-sign.byteimg.com, REJECT
-HOST, *default.ixigua.com, REJECT
-HOST, v6-novelapp.ixigua.com, REJECT
-HOST, *novelapp.ixigua.com, REJECT
 HOST, tnc3-aliec2.zijieapi.com, REJECT
 HOST, tnc3-alisc1.zijieapi.com, REJECT
 HOST, ads3-normal-lq.zijieapi.com, REJECT
@@ -153,9 +149,6 @@ HOST, ads5-normal-lq.zijieapi.com, REJECT
 HOST, polaris3-normal-lq.zijieapi.com, REJECT
 HOST, sf3-fe-tos.pglstatp-toutiao.com, REJECT
 HOST, api-access.pangolin-sdk-toutiao.com, REJECT
-; > 抖音开屏?
-HOST, dig.bdurl.net, REJECT
-HOST, ug.snssdk.com, REJECT
 # > 腾讯
 HOST, e.qq.com, REJECT
 HOST, l.qq.com, REJECT
@@ -219,21 +212,14 @@ HOST, etl.xlmc.sandai.net, REJECT
 HOST, hub5emu.v6.shub.sandai.net, REJECT
 HOST, hub5idx.v6.shub.sandai.net, REJECT
 HOST, hub5btmain.v6.shub.sandai.net, REJECT
-# > 小红书
-HOST, ads-img-qc.xhscdn.com, REJECT
-HOST, ads-video-al.xhscdn.com, REJECT
-HOST, ads-video-qc.xhscdn.com, REJECT
-# > 虎扑
-HOST, adx.hupu.com, REJECT
-HOST, goblin.hupu.com, REJECT
-HOST, adx-api.hupu.com, REJECT
 # > Bilibili_自动换区支持(该规则将拦截 B站 GRPC 服务端地址, 迫使其使用旧协议传输内容, 使换区脚本正常触发)
 IP-CIDR, 203.107.1.1/24, REJECT
 ; > Bilibili proto 支持
 // HOST, grpc.biliapi.net, REJECT
+# > 虎扑
+HOST-SUFFIX, goblin.hupu.com, REJECT
 # > 彩云天气
 HOST, ad.cyapi.cn, REJECT
-HOST, ad.caiyunapp.com, REJECT
 # > 58同城
 HOST, adshow.58.com, REJECT
 # > 美图秀秀
