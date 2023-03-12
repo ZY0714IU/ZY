@@ -1,8 +1,8 @@
 # Name    Rule
 # Author  @RuCu6, @ddgksf2013, @kokoryh, @blackmatrix7, @app2smile, @DivineEngine, @zhangjun, @lwd-temp, @NobyDa
-# UpdateTime  2023-03-10 00:33
-# “#” “;" “//” 是注释符号, 去掉符号该行才生效
-# 开启 「其他设置」->「分流匹配优化」选项, 则匹配优先级如下
+# UpdateTime   2023-03-12 21:50
+# “#” “;" “//” 是注释符号,去掉符号该行才生效
+# 开启「分流匹配优化」选项,则匹配优先级如下
 ; HOST > HOST-SUFFIX > HOST-KEYWORD(WILDCARD) > GEOIP=IP-CIDR > USER-AGENT
 ; 完整域名匹配
 //HOST, www.google.com, PROXY
@@ -17,7 +17,7 @@
 
 
 ### ===== DIRECT ===== ###
-# 微博; 注意! 微博去广告不可开启 Quantumult X 「其他设置」->「兼容性增强」功能, 否则微博脚本失效, 此为Quantumult X BUG
+# 微博;注意!微博去广告不可开启Quantumult X「兼容性增强」功能,否则微博脚本失效,此为Quantumult X BUG
 HOST, sdkapp.uve.weibo.com, DIRECT     //开屏
 HOST, weibointl.api.weibo.cn, DIRECT   //轻享版
 # 其他
@@ -37,7 +37,7 @@ HOST, fairplay.l.qq.com, DIRECT
 
 
 ### ===== PROXY ===== ###
-; 可把 Select 换成任意 策略组/节点
+; 可把Select换成任意 策略组/节点
 # Google
 HOST-SUFFIX, gmail.com, Select
 HOST-SUFFIX, google.cn, Select
@@ -131,10 +131,10 @@ HOST, nsclick.baidu.com, REJECT
 HOST, nadvideo2.baidu.com, REJECT
 HOST, mobads-logs.baidu.com, REJECT
 HOST-KEYWORD, duxiaoman, REJECT
-; 贴吧_屏蔽域名 DNS 查询(否则去广告不干净)
+; 贴吧_屏蔽域名DNS查询(否则去广告不干净)
 IP-CIDR, 180.76.76.200/32, REJECT
-; 贴吧屏蔽_ws (副作用: 消息通知功能失效, 需手动进入查看), 强制帖子接口走 http
-//HOST,im.tieba.baidu.com, REJECT
+; 贴吧屏蔽_ws(副作用:消息通知功能失效,需手动进入查看), 强制帖子接口走http
+//HOST, im.tieba.baidu.com, REJECT
 //IP-CIDR, 203.107.1.1/24, REJECT
 # 字节跳动
 HOST, dig.bdurl.net, REJECT
@@ -176,9 +176,9 @@ HOST, splashqqlive.gtimg.com, REJECT
 HOST, wxsnsdythumb.wxs.qq.com, REJECT
 HOST, adsmind.apdcdn.tc.qq.com, REJECT
 # Apple
-; 绕过 App 企业证书过期
+; 绕过App企业证书过期
 HOST, ocsp.apple.com, REJECT
-; Safari 防跳转
+; Safari防跳转
 HOST, app-site-association.cdn-apple.com, REJECT
 # Google
 HOST, ads.youtube.com, REJECT
@@ -210,9 +210,9 @@ HOST, etl.xlmc.sandai.net, REJECT
 HOST, hub5emu.v6.shub.sandai.net, REJECT
 HOST, hub5idx.v6.shub.sandai.net, REJECT
 HOST, hub5btmain.v6.shub.sandai.net, REJECT
-# Bilibili_自动换区支持(该规则将拦截 B站 GRPC 服务端地址, 迫使其使用旧协议传输内容, 使换区脚本正常触发)
+# Bilibili_自动换区支持(该规则将拦截B站GRPC服务端地址,迫使其使用旧协议传输内容,使换区脚本正常触发)
 IP-CIDR, 203.107.1.1/24, REJECT
-; Bilibili proto 支持
+; Bilibili proto支持
 //HOST, grpc.biliapi.net, REJECT
 # 虎扑
 HOST-SUFFIX, goblin.hupu.com, REJECT
@@ -234,9 +234,9 @@ HOST-SUFFIX, xiuxiu-im-route.meitu.com, REJECT
 HOST-SUFFIX, push.meitu.com, REJECT
 HOST-SUFFIX, i.qchannel03.cn, REJECT
 HOST-SUFFIX, adui.tg.meitu.com, REJECT
-# 工商银行 开屏
+# 工商银行_开屏
 HOST, pageviewp.icbc.com.cn, REJECT
-# 央视频 开屏广告
+# 央视频_开屏
 HOST, wimg.yangshipin.cn, REJECT
 # 数字联盟
 HOST-SUFFIX, shuzilm.cn, REJECT
