@@ -1,6 +1,6 @@
-# > Name        Rule
-# > Author      @RuCu6, @ddgksf2013, @kokoryh, @blackmatrix7, @app2smile, @DivineEngine, @zhangjun, @lwd-temp, @NobyDa, @ZY0714iu
-# > UpdateTime  2023-03-10 00:33
+# > Name    Rule
+# > Author  @RuCu6, @ddgksf2013, @kokoryh, @blackmatrix7, @app2smile, @DivineEngine, @zhangjun, @lwd-temp, @NobyDa
+# > UpdateTime  2023-03-12 12:41
 # > “#” “;" “//” 是注释符号, 去掉符号该行才生效
 # > 开启 「其他设置」->「分流匹配优化」选项, 则匹配优先级如下
 ; > HOST > HOST-SUFFIX > HOST-KEYWORD(WILDCARD) > GEOIP=IP-CIDR > USER-AGENT
@@ -18,13 +18,13 @@
 
 ### ===== DIRECT ===== ###
 # > 微博; 注意! 微博去广告不可开启 Quantumult X 「其他设置」->「兼容性增强」功能, 否则微博脚本失效, 此为Quantumult X BUG
-HOST, sdkapp.uve.weibo.com, DIRECT   //开屏
-HOST, weibointl.api.weibo.cn, DIRECT //轻享版
+HOST, sdkapp.uve.weibo.com, DIRECT     //开屏
+HOST, weibointl.api.weibo.cn, DIRECT   //轻享版
 # > 其他
-HOST, msg.umeng.com, DIRECT          //友盟
-HOST, msg.umengcloud.com, DIRECT     //友盟
-HOST-SUFFIX, getui.com, DIRECT       //个推
-HOST, ynuf.aliapp.org, DIRECT        //阿里App
+HOST-SUFFIX, msg.umeng.com, DIRECT      //友盟
+HOST-SUFFIX, msg.umengcloud.com, DIRECT //友盟
+HOST-SUFFIX, getui.com, DIRECT          //个推
+HOST-SUFFIX, ynuf.aliapp.org, DIRECT    //阿里
 HOST-SUFFIX, qishui.com, DIRECT      //汽水音乐
 HOST-SUFFIX, 51y5.net, DIRECT    //WiFi万能钥匙
 HOST-SUFFIX, ipleak.net, DIRECT
@@ -35,47 +35,56 @@ HOST, vi.l.qq.com, DIRECT
 HOST, livew.l.qq.com, DIRECT
 HOST, fairplay.l.qq.com, DIRECT
 
+
 ### ===== PROXY ===== ###
 ; > 可把 Select 换成任意 策略组/节点
-; > Google
-HOST, www.google.com, Select
+# > Google
 HOST-SUFFIX, gmail.com, Select
 HOST-SUFFIX, google.cn, Select
 HOST-SUFFIX, google.co.jp, Select
 HOST-SUFFIX, google.com.sg, Select
 HOST-SUFFIX, google.com.hk, Select
-HOST-KEYWORD, www.google., Select
+HOST-KEYWORD, www.google, Select
+# > 必应国籍版(不开分流则国内版)
+HOST, www.bing.com, Select
 ; > Microsoft
-// HOST-SUFFIX, live.net, DIRECT
-// HOST-SUFFIX, login.live.com, DIRECT
-// HOST-SUFFIX, storage.live.com, DIRECT
-; > GitHub
+// HOST-SUFFIX, live.net, Select
+// HOST-SUFFIX, login.live.com, Select
+// HOST-SUFFIX, storage.live.com, Select
+# > GitHub
+HOST-SUFFIX, github.io, Select
 HOST-SUFFIX, github.com, Select
-HOST-SUFFIX, rawgithub.com, Select
+HOST-SUFFIX, githubapp.com, Select
+HOST-SUFFIX, githubassets.com, Select
 HOST-SUFFIX, githubusercontent.com, Select
 HOST-KEYWORD, github, Select
 # > Apple
-HOST, testflight.apple.com, Select
+HOST-SUFFIX, testflight.apple.com, Select
 # > 机场
-HOST, subs.usero.cn, Select         //FishPort
-HOST, www.efcloud.cc, Select        //Efcloud
-HOST-SUFFIX, mojie.nl, Select       //Mojie
+HOST-SUFFIX, subs.usero.cn, Select //FishPort
+HOST-KEYWORD, fishport, Select     //FishPort
+HOST-KEYWORD, efcloud, Select      //Efcloud
+HOST-KEYWORD, efshop, Select       //Efcloud
+HOST-KEYWORD, mojie, Select        //Mojie
+HOST-KEYWORD, xsus, Select         //xsus
 # > 代理软件激活检测
 HOST-SUFFIX, nssurge.com, Select
 HOST-SUFFIX, quantumult.app, Select
 HOST-SUFFIX, surge-activation.com, Select
 HOST-SUFFIX, stash-activation.com, Select
 # > 其他
-HOST, www.nsloon.com, Select     //Loon
-HOST-KEYWORD, v2ex, Select
-HOST-KEYWORD, notion, Select
-HOST, filters.adtidy.org, Select
+HOST-SUFFIX, adtidy.org, Select
+HOST-SUFFIX, adguard.com, Select
 HOST-SUFFIX, adguard.org, Select
+HOST-KEYWORD, v2ex, Select
+HOST-KEYWORD, loon, Select
+HOST-KEYWORD, notion, Select
+
 
 ### ===== REJECT ===== ###
 # > 安全浏览限制解除
-HOST, lookup.api.bsb.baidu.com, REJECT
-HOST, safebrowsing.googleapis.com, REJECT
+HOST-SUFFIX, lookup.api.bsb.baidu.com, REJECT
+HOST-SUFFIX, safebrowsing.googleapis.com, REJECT
 # > 知乎
 HOST, mqtt.zhihu.com, REJECT
 HOST, sugar.zhihu.com, REJECT
@@ -93,7 +102,7 @@ HOST, adash-c.ut.taobao.com, REJECT
 HOST, adashbc.ut.taobao.com, REJECT
 HOST, adashxgc.ut.taobao.com, REJECT
 ; > 高德地图
-//HOST, amdc.m.taobao.com, REJECT //已加入重写
+HOST, amdc.m.taobao.com, REJECT
 ; > 微博_去开屏
 HOST, boot.biz.weibo.com, REJECT
 HOST, sdkclick.biz.weibo.com, REJECT
@@ -171,17 +180,6 @@ HOST, adsmind.apdcdn.tc.qq.com, REJECT
 HOST, ocsp.apple.com, REJECT
 ; > Safari 防跳转
 HOST, app-site-association.cdn-apple.com, REJECT
-# > Microsoft
-HOST, ads.msn.com, REJECT
-HOST, ads1.msn.com, REJECT
-HOST, ads2.msn.com, REJECT
-HOST, rads.msn.com, REJECT
-HOST, mobileads.msn.com, REJECT
-HOST, bingads.microsoft.com, REJECT
-; > Outlook
-HOST, acdn.adnxs.com, REJECT
-HOST, sin3-ib.adnxs.com, REJECT
-HOST, mediation.adnxs.com, REJECT
 # > Google
 HOST, ads.youtube.com, REJECT
 HOST-SUFFIX, doubleclick.net, REJECT
@@ -223,11 +221,20 @@ HOST, ad.cyapi.cn, REJECT
 # > 58同城
 HOST, adshow.58.com, REJECT
 # > 美图秀秀
-HOST, openapi.mtlab.meitu.com, REJECT
-HOST, xiuxiu-im-route.meitu.com, REJECT
-HOST, push.meitu.com, REJECT
-HOST, i.qchannel03.cn, REJECT
-HOST, adui.tg.meitu.com, REJECT
+HOST-SUFFIX, xiuxiu.video.xiuxiustatic.com, REJECT
+HOST-SUFFIX, qchannel01.cn, REJECT
+HOST-SUFFIX, stat.meitudata.com, REJECT
+HOST-SUFFIX, rabbit.meitustat.com, REJECT
+HOST-SUFFIX, strategy.app.meitudata.com, REJECT
+HOST-SUFFIX, meepo.meitustat.com, REJECT
+HOST-SUFFIX, gondar.meitustat.com, REJECT
+HOST-SUFFIX, xiuxiu-im-connd.meitu.com, REJECT
+
+HOST-SUFFIX, openapi.mtlab.meitu.com, REJECT
+HOST-SUFFIX, xiuxiu-im-route.meitu.com, REJECT
+HOST-SUFFIX, push.meitu.com, REJECT
+HOST-SUFFIX, i.qchannel03.cn, REJECT
+HOST-SUFFIX, adui.tg.meitu.com, REJECT
 # > 工商银行 开屏
 HOST, pageviewp.icbc.com.cn, REJECT
 # > 央视频 开屏广告
