@@ -1,6 +1,6 @@
 # Name    Rule
 # Author  @RuCu6, @ddgksf2013, @kokoryh, @blackmatrix7, @app2smile, @DivineEngine, @zhangjun, @lwd-temp, @NobyDa
-# UpdateTime   2023-03-12 21:50
+# UpdateTime   2023-03-13 13:35
 # “#” “;" “//” 是注释符号,去掉符号该行才生效
 # 开启「分流匹配优化」选项,则匹配优先级如下
 ; HOST > HOST-SUFFIX > HOST-KEYWORD(WILDCARD) > GEOIP=IP-CIDR > USER-AGENT
@@ -73,6 +73,7 @@ HOST-SUFFIX, quantumult.app, Select
 HOST-SUFFIX, surge-activation.com, Select
 HOST-SUFFIX, stash-activation.com, Select
 # 其他
+HOST-SUFFIX, shrtm.nu, Select //Quantumult X
 HOST-SUFFIX, adtidy.org, Select
 HOST-SUFFIX, adguard.com, Select
 HOST-SUFFIX, adguard.org, Select
